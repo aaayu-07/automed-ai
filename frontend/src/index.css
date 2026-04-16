@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Clean, Calm Medical Light Palette */
+  --bg-dark: #F8FAFC;
+  /* Soft medical gray/blue background */
+  --bg-panel: #FFFFFF;
+  /* Pure white for panels */
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  /* Soft frosted glass */
+  --bg-glass-hover: rgba(255, 255, 255, 0.9);
+
+  --primary: #0EA5E9;
+  /* Medical Sky Blue */
+  --primary-glow: rgba(14, 165, 233, 0.15);
+  /* Soft shadow, not neon */
+  --secondary: #10B981;
+  /* Soft mint/teal */
+  --secondary-glow: rgba(16, 185, 129, 0.15);
+  --accent: #E2E8F0;
+  /* Soft border grey */
+
+  --text-main: #0F172A;
+  /* Dark slate for high contrast */
+  --text-muted: #64748B;
+  /* Slate gray for secondary text */
+  --text-dim: #94A3B8;
+
+  --success: #059669;
+  /* Soft Medical Green */
+  --warning: #D97706;
+  /* Soft Amber */
+  --danger: #DC2626;
+  /* Soft Coral Warning */
+
+  --border-color: rgba(15, 23, 42, 0.08);
+  /* Dark slate with low opacity */
+  --border-focus: rgba(14, 165, 233, 0.5);
+
+  --radius-sm: 12px;
+  /* Increased for softer look */
+  --radius-md: 24px;
+  --radius-lg: 32px;
+
+  --shadow-glow: 0 10px 40px -10px rgba(0, 0, 0, 0.06);
+  /* Calm elevation */
+  --glass-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  /* Subtle depth */
+}
+
+/* ── Dark Mode ─────────────────────────────────────────── */
+html.dark {
+  --bg-dark: #0B1220;
+  --bg-panel: #111827;
+  --bg-glass: rgba(17, 24, 39, 0.85);
+  --bg-glass-hover: rgba(17, 24, 39, 0.95);
+
+  --primary: #3B82F6;
+  --primary-glow: rgba(59, 130, 246, 0.2);
+  --secondary: #22D3EE;
+  --secondary-glow: rgba(34, 211, 238, 0.15);
+  --accent: #1F2937;
+
+  --text-main: #E5E7EB;
+  --text-muted: #9CA3AF;
+  --text-dim: #6B7280;
+
+  --success: #34D399;
+  --warning: #FBBF24;
+  --danger: #F87171;
+
+  --border-color: rgba(55, 65, 81, 0.9);
+  --border-focus: rgba(59, 130, 246, 0.5);
+
+  --shadow-glow: 0 10px 40px -10px rgba(59, 130, 246, 0.15);
+  --glass-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Body ──────────────────────────────────────────────── */
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 40%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark body gradient override */
+html.dark body {
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(34, 211, 238, 0.04) 0%, transparent 40%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  margin-top: 0;
+  color: var(--text-main);
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+  /* Removing gradient */
+}
+
+a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow: var(--shadow-glow);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius-sm);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  /* White text on blue */
+  border: 1px solid transparent;
+  box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.btn-primary:hover {
+  background: #0284c7;
+  /* Darker blue */
+  color: #fff;
+  box-shadow: 0 6px 16px var(--primary-glow);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-main);
+  color: var(--text-main);
+}
+
+/* Form Elements */
+input,
+select,
+textarea {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  /* Fix for width 100% padding issue */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px var(--primary-glow);
+  /* Outer focus ring */
+}
+
+label {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  margin-left: 0.2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Status Indicators */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-low {
+  background: #ECFDF5;
+  color: var(--success);
+  border: 1px solid #A7F3D0;
+}
+
+.status-moderate {
+  background: #FFFBEB;
+  color: var(--warning);
+  border: 1px solid #FDE68A;
+}
+
+.status-high {
+  background: #FEF2F2;
+  color: var(--danger);
+  border: 1px solid #FECACA;
+}
+
+/* Layout Utilities which match Tailwind logic but in vanilla CSS */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-cols-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ── Dark Mode: Element Overrides ─────────────────────── */
+
+/* Glass panels — swap white borders for dark borders */
+html.dark .glass-panel {
+  border: 1px solid var(--border-color);
+  background: var(--bg-glass);
+}
+
+html.dark .glass-panel:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Form inputs */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background: #1F2937;
+  border-color: var(--border-color);
+  color: var(--text-main);
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  background: #1F2937;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+/* Table header rows (hardcoded #F8FAFC in JSX) */
+html.dark tr[style*="#F8FAFC"] {
+  background: #1a2235 !important;
+}
+
+/* Table row hover (hardcoded #F0F9FF in JSX) */
+html.dark tr:hover {
+  background: rgba(59, 130, 246, 0.06) !important;
+}
+
+/* Status badges — dark-friendly colours */
+html.dark .status-low {
+  background: rgba(52, 211, 153, 0.15);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+html.dark .status-moderate {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+html.dark .status-high {
+  background: rgba(248, 113, 113, 0.15);
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+/* btn-primary hover in dark stays vibrant blue */
+html.dark .btn-primary:hover {
+  background: #2563EB;
+}
+
+/* Dashboard card icon backgrounds (hardcoded) */
+html.dark [style*="#F0F9FF"],
+html.dark [style*="#ECFDF5"] {
+  background: rgba(59, 130, 246, 0.12) !important;
+  border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+/* History/Admin card background (hardcoded #FFFFFF) */
+html.dark [style*="background: '#FFFFFF'"],
+html.dark [style*='background: "#FFFFFF"'] {
+  background: var(--bg-panel) !important;
+}
+
+/* Scrollbar dark variant */
+html.dark ::-webkit-scrollbar-track {
+  background: #0f1720;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #2d3748;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4a5568;
+}
